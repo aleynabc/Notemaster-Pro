@@ -1,0 +1,5 @@
+{
+  "name": "NoteMaster Pro",
+  "description": "Müşteri ve iş takibi için gelişmiş, modern ve şık bir not defteri uygulaması.",
+  "requestFramePermissions": ["notifications"]
+}
