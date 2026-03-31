@@ -1,51 +1,43 @@
-# Android APK Oluşturma Rehberi
+Android APK Build Guide
+This application uses Capacitor to transform web technologies (React + Vite) into a native Android application.
 
-Bu uygulama, web teknolojilerini (React + Vite) Android uygulamasına dönüştürmek için **Capacitor** kullanmaktadır.
+Prerequisites
+Node.js & NPM: Must be installed on your system.
 
-## Gereksinimler
+Android Studio: Required for Android SDK and Gradle.
 
-1.  **Node.js & NPM:** Bilgisayarınızda yüklü olmalıdır.
-2.  **Android Studio:** Android SDK ve Gradle için gereklidir.
-3.  **Java Development Kit (JDK):** Sürüm 17 veya üzeri önerilir.
+Java Development Kit (JDK): Version 17 or higher is recommended.
 
-## APK Oluşturma Adımları
+Steps to Generate APK
+1. Build the Project
+First, compile the web project:
 
-### 1. Projeyi Derleyin
-Önce web projesini derleyin:
-```bash
+Bash
 npm run build
-```
+2. Sync with Capacitor
+Copy the web assets to the Android project:
 
-### 2. Capacitor ile Senkronize Edin
-Web çıktılarını Android projesine aktarın:
-```bash
+Bash
 npx cap sync
-```
+3. Open with Android Studio
+You can open the project in Android Studio to edit or build visually:
 
-### 3. Android Studio ile Açın
-Projeyi Android Studio'da açarak görsel olarak düzenleyebilir veya derleyebilirsiniz:
-```bash
+Bash
 npx cap open android
-```
+4. Build APK via Command Line (Fast Method)
+To generate the APK directly without opening Android Studio:
 
-### 4. Komut Satırından APK Oluşturun (Hızlı Yöntem)
-Android Studio'yu açmadan direkt APK almak için:
-```bash
+Bash
 cd android
 ./gradlew assembleDebug
-```
-Derleme bittiğinde APK dosyanız şu konumda olacaktır:
-`android/app/build/outputs/apk/debug/app-debug.apk`
+Once the build is complete, your APK file will be located at:
+android/app/build/outputs/apk/debug/app-debug.apk
 
-## İkon ve Logo Değiştirme
+Changing Icons and Logos
+To change application icons, use the mipmap folders located in android/app/src/main/res/. Your current icons are in the android/app/src/main/res/ root directory. It is recommended to distribute them into the appropriate mipmap folders or use the following asset tool:
 
-Uygulama ikonlarını değiştirmek için `android/app/src/main/res/` klasöründeki `mipmap` klasörlerini kullanabilirsiniz. 
-Sizin sağladığınız ikonlar şu an `android/app/src/main/res/` ana dizininde bulunmaktadır. Bunları uygun boyutlarda `mipmap` klasörlerine dağıtmanız veya aşağıdaki aracı kullanmanız önerilir:
-
-```bash
+Bash
 npm install -g @capacitor/assets
 npx capacitor-assets generate --android
-```
-
-## İpucu
-Eğer uygulamayı gerçek bir cihazda test etmek isterseniz, cihazınızı USB ile bağlayıp Android Studio üzerinden "Run" butonuna basmanız yeterlidir.
+Pro Tip 💡
+If you want to test the application on a physical device, simply connect your device via USB and click the "Run" button in Android Studio.
